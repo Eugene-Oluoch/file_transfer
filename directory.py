@@ -13,6 +13,6 @@ def gets_allowed_directories_in_home():
             allowed_directories.append(directory_name)
     return allowed_directories
 
+
 def print_allowed_directories(allowed_directories):
     print("Allowed Directories: \n\n" + ", ".join(allowed_directories)+"\n\n")
-
