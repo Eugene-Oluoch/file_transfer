@@ -1,7 +1,10 @@
-import glob, shutil,os
-def handle_file_transfer(from_path,to_path,file_extension):  
-    all_files_with_given_extension = glob.glob(f"*.{file_extension}")
-    for file in all_files_with_given_extension:
-        shutil.move(f"{from_path}/{file}",to_path)
-    print(f"Successfully transfered {len(all_files_with_given_extension)} files.")
+import os,glob,shutil
+from directory import get_home_path
+def handle_file_transfer(paths,file_extension): 
     
+    os.chdir(paths["from_path"])
+    
+    for file in glob.glob(f"*.{file_extension}"):
+        shutil.move(f'{paths["from_path"]}/{file}', paths["to_path"])
+        
+    print("Files transfered successfully.")
