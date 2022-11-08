@@ -11,6 +11,8 @@ def gets_allowed_directories_in_home():
         directory_name = directory[len(home_directory)+1:]
         if directory_name.__contains__(".") == False:
             allowed_directories.append(directory_name)
+    return allowed_directories
+
+def print_allowed_directories(allowed_directories):
     print("Allowed Directories: \n\n" + ", ".join(allowed_directories)+"\n\n")
-    return
 
