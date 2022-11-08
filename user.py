@@ -1,4 +1,3 @@
-from transfer import handle_file_transfer
 from directory import *
 
 def getting_data_from_user():
