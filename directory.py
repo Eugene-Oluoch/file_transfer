@@ -16,3 +16,6 @@ def gets_allowed_directories_in_home():
 def print_allowed_directories(allowed_directories):
     print("Allowed Directories: \n\n" + ", ".join(allowed_directories)+"\n\n")
 
+def generate_paths(from_directory,to_directory):
+    home_path = get_home_path()
+    return {"from_path": f"{home_path}/{from_directory}", "to_path": f"{home_path}/{to_directory}"}
