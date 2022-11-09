@@ -22,7 +22,20 @@ def getting_data_from_user():
     file_extentions = input("What is the file extension of the file you want transfer? ")
 
     has_error = validate_input_directories(from_directory,to_directory)
-
+    continue_to_next_step = False
+    while not continue_to_next_step:
+        if has_error in ["both", "from", "to"]:
+            if has_error == "both":
+                from_directory = input("Re-enter from directory: ")
+                to_directory = input("Re-enter to directory: ")
+            elif has_error == "from":
+                from_directory = input("Re-enter from directory: ")
+            elif has_error == "to":
+                to_directory = input("Re-enter to directory: ")
+        else:
+            continue_to_next_step = True
+        has_error = validate_input_directories(from_directory,to_directory)
+        
 
 
 
