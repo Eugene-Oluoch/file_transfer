@@ -1,18 +1,19 @@
 from directory import *
-from utils.map_check import *
 
+# = "The given directories are not part of the home directory"
+# "The given from directory isn't part of the home directory"
+# "The given to directory isn't part of the home directory"
 def validate_input_directories(from_directory,to_directory):
     all_allowed_directories = gets_allowed_directories_in_home()
-    errors = {}
 
     if from_directory not in all_allowed_directories and to_directory not in all_allowed_directories:
-        errors["both"] = "The given directories are not part of the home directory"
+        return "both"
     elif from_directory not in all_allowed_directories:
-        errors["from"] = "The given from directory isn't part of the home directory"
+        return "from"
     elif to_directory not in all_allowed_directories:
-        errors["to"] = "The given to directory isn't part of the home directory"
-
-    return None if is_map_empty(errors) else get_error_key(errors)
+        return "to"
+    else:
+        return None
     
 
 def getting_data_from_user():
