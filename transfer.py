@@ -6,7 +6,7 @@ def handle_file_transfer(user_data):
     from_path, to_path, file_extentions = user_data["from_path"],user_data["to_path"],user_data["file_extentions"]
     files = glob.glob(f"*.{file_extentions}",root_dir=from_path)
 
-    for file in files:
+    for file in tqdm(files):
         try:
             time.sleep(0.5)
             shutil.move(f'{from_path}/{file}', to_path)
