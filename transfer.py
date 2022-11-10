@@ -19,7 +19,7 @@ def handle_file_transfer(user_data):
                     value_in_name = file[splitted_file[0].index("(")+1:splitted_file[0].index(")")]
                     for ch in value_in_name:
                         if ch.isalpha():
-                            print("Not your format")
+                            print("Not our format")
                             break
                             
     print("Files transfer was successful ✅")
