@@ -7,6 +7,10 @@ def handle_file_transfer(user_data):
     # Remove when packaging
     os.chdir(from_path)
     files = glob.glob(f"*.{file_extentions}")
+    
+    if len(files) < 1:
+        print(f"\nNo files found with the given Extension: {file_extentions}")
+        return
 
     for file in tqdm(files):
         try:
@@ -33,5 +37,4 @@ def handle_file_transfer(user_data):
             else:
                 print(f"\nFile: {file} skipped")
                 continue
-
     print("Files transfer was successful ✅")
