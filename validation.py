@@ -21,9 +21,15 @@ def get_error_message(error):
         return "\nThe given from directory isn't part of the home directory\n"
     elif error == "to":
         return "\nThe given to directory isn't part of the home directory\n"
-        
+    
+def validate_file_extension(extension):
+    file_extensions = ["jpg", "jpeg", "png", "mp3", "mp4", "txt", "pdf", "docx"]
+    return extension in file_extensions 
+    
 def validate_user_input(from_directory,to_directory, file_extension):
     has_error = validate_input_directories(from_directory,to_directory)
+    valid_file_extension = validate_file_extension(file_extension)     
+
     continue_to_next_step = False
     while not continue_to_next_step:
         if has_error in ["both", "from", "to"]:
@@ -49,8 +55,4 @@ def validate_user_input(from_directory,to_directory, file_extension):
         
     return {"from_directory":from_directory,"to_directory":to_directory, "file_extension":file_extension}
 
-def validate_file_extension(extension):
-    file_extensions = ["jpg", "jpeg", "png", "mp3", "mp4", "txt", "pdf", "docx"]
-    if extension not in file_extensions:
-        return False
-    return True        
+       
