@@ -56,3 +56,8 @@ def validate_user_input(from_directory,to_directory, file_extension):
     return {"from_directory":from_directory,"to_directory":to_directory, "file_extension":file_extension}
 
        
+def validate_file_copy_existence(file_name):
+    return bool(file_name.__contains__("(") and file_name.__contains__(")"))
+
+def validate_value_in_brackets(value_in_brackets):
+    return not any(ch.isalpha() for ch in value_in_brackets)
