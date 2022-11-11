@@ -14,23 +14,22 @@ def handle_file_transfer(user_data):
 
     for file in tqdm(files):
         try:
-            time.sleep(0.5)
+            time.sleep(0.1)
             shutil.move(f'{from_path}/{file}', to_path)
         except Exception:
             print(f"File: {file} already exists")
             ask_to_rename = input("Transfer anyways?[y/n] ").lower()
-
             if ask_to_rename == "y":
                 splitted_file = file.split(".")
                 file_name, file_extension = splitted_file[0], splitted_file[1]
                 if file_name.__contains__("(") and file_name.__contains__(")"):
                     open_bracket_index, close_bracket_index = file_name.index("("), file_name.index(")")
-                    value_in_name = file[open_bracket_index+1:close_bracket_index]
-                    is_valid = not any(ch.isalpha() for ch in value_in_name)
+                    value_in_brackets = file[open_bracket_index+1:close_bracket_index]
+                    is_valid = not any(ch.isalpha() for ch in value_in_brackets)
                     if is_valid:
-                        new_value_to_attach = str(int(value_in_name)+1)
-                        x = file_name.replace(value_in_name,new_value_to_attach)
-                        os.rename(f'{from_path}/{file}', f"{to_path}/{x}.{file_extension}")
+                        new_value_to_attach = str(int(value_in_brackets)+1)
+                        new_file = file_name.replace(value_in_brackets,new_value_to_attach)
+                        os.rename(f'{from_path}/{file}', f"{to_path}/{new_file}.{file_extension}")
                 else:
                     renamed_file = f"{file_name}(1)"
                     os.rename(f'{from_path}/{file}', f"{to_path}/{renamed_file}.{file_extension}")
